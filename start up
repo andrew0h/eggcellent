@@ -1,0 +1,68 @@
+sudo apt-get install vim
+sudo apt-get git
+
+java -version
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-set-default
+java -version
+javac -version
+
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd
+
+chmod 755 xampp-linux-*-installer.run
+sudo ./xampp-linux-*-installer.run
+sudo /opt/lampp/lampp start
+sudo /opt/lampp/manager-linux-x64.run
+
+who am i
+sudo chown -R andy:andy /opt/lampp/htdocs
+sudo vim /opt/lampp/etc/httpd.conf
+/User daemon
+i
+;change the following lines
+;User daemon
+;User daemon
+;to
+;User andy
+;User andy
+<Esc>
+:wq
+cd /
+sudo find `pwd` -name lang.tmp
+sudo chmod 644 <whatever the path/file directory above is>
+
+
+;check to make sure /bin is in your path
+echo $PATH
+;if :/bin/: is in the path then bin is in your path. This makes sure that when you create a symbolic link in /bin it can be called from any directory at the prompt. if it is not in your path you may have your bin directory configured to a different location.
+cd /bin
+sudo ln -s /opt/lampp/bin/phpize-*.*.* phpize
+;test phpize
+cd /
+sudo phpize -v
+;OR
+/opt/lampp/bin/phpize
+;pecl???
+;download most recent xdebug from xdebug.org/wizard.php
+cd ~/Downloads
+tar -xvzf xdebug-*.*.*.tgz
+phpize
+;make sure phpize matches output from phpinfo/xdebugwizard
+(sudo?) ./configure --enable-xdebug --with-php-config=/opt/lampp/bin/php-config
+sudo cp modules/xdebug.so /opt/lampp/lib/php/extensions/no-debug-non-zts-**********
+;open php.ini with vim
+/zend_extension
+i
+;insert this shit:
+;zend_extension="/opt/lampp/lib/php/extensions/no-debug-non-zts-*********/xdebug.so"
+;xdebug.remote_enable=1
+;xdebug.remote_handler=dbgp
+;xdebug.remote_host=localhost
+;xdebug.remote_port=9000
+;xdebug.show_local_vars=1
+;xdebug.remote_log=/opt/lampp/logs/xdebug.log
+:wq
+;restart xampp
+
