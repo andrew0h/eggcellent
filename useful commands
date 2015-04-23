@@ -14,3 +14,4 @@ git commit -m "blah blah"
 git status
 git remote add origin https://github.com/andrew0h/NAME_OF_PROJECT.git
 git push -u origin master
+git pull
